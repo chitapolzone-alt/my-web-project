@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chitapol Nantaphong | Portfolio Resume</title>
+  <style>
+    :root {
+      --bg: #f6f7fb;
+      --surface: #ffffff;
+      --surface-soft: #f1f3fb;
+      --text: #1f2430;
+      --muted: #667085;
+      --border: #e4e7ec;
+      --primary: #7c3aed;
+      --primary-dark: #5b21b6;
+      --accent: #ede9fe;
+      --shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+      --radius: 22px;
+      --radius-sm: 16px;
+      --container: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(124, 58, 237, 0.1), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f6f7fb 100%);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--container));
+      margin: 0 auto;
+    }
+
+    .section { padding: 84px 0; }
+    .section-title {
+      font-size: clamp(1.6rem, 2.3vw, 2.2rem);
+      margin: 0 0 12px;
+      letter-spacing: -0.02em;
+    }
+    .section-subtitle {
+      margin: 0 0 32px;
+      color: var(--muted);
+      max-width: 680px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      background: rgba(124, 58, 237, 0.1);
+      color: var(--primary-dark);
+      padding: 10px 14px;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      color: #344054;
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.88);
+      border-bottom: 1px solid rgba(228, 231, 236, 0.95);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 76px;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--primary), #a855f7);
+      color: white;
+      box-shadow: 0 10px 24px rgba(124, 58, 237, 0.28);
+      font-size: 1.05rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      color: #475467;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover { color: var(--primary); }
+
+    .hero {
+      padding: 62px 0 40px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.95fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .hero-card {
+      padding: clamp(28px, 4vw, 42px);
+      min-height: 100%;
+    }
+
+    .eyebrow {
+      color: var(--primary);
+      font-size: 0.95rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      line-height: 1.05;
+      margin: 0 0 18px;
+      letter-spacing: -0.04em;
+    }
+
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.06rem;
+      max-width: 62ch;
+    }
+
+
+    .hero-role {
+      margin: 0 0 16px;
+      font-size: clamp(1.35rem, 2.4vw, 2rem);
+      line-height: 1.2;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: var(--primary);
+    }
+
+    .hero-copy {
+      max-width: 48ch;
+      font-size: 1rem !important;
+    }
+
+    .hero-facts {
+      display: grid;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .hero-fact {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 13px 15px;
+      border-radius: 14px;
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+    }
+
+    .hero-fact span {
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .hero-fact strong {
+      text-align: right;
+      font-size: 0.92rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 14px;
+      font-weight: 700;
+      transition: 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), #9333ea);
+      color: white;
+      box-shadow: 0 14px 28px rgba(124, 58, 237, 0.18);
+    }
+    .btn-primary:hover { transform: translateY(-1px); }
+
+    .btn-secondary {
+      background: white;
+      border-color: var(--border);
+      color: var(--text);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .stat-box {
+      padding: 18px;
+      border-radius: 18px;
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+    }
+
+    .stat-box strong {
+      display: block;
+      font-size: 1.3rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+
+    .stat-box span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .profile-panel {
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    .profile-photo-wrap {
+      position: relative;
+      min-height: 520px;
+      background: linear-gradient(180deg, rgba(124, 58, 237, 0.12), rgba(124, 58, 237, 0));
+      overflow: hidden;
+    }
+
+    .profile-photo-wrap::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 42%;
+      background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.96) 100%);
+      pointer-events: none;
+    }
+
+    .profile-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 28%;
+      min-height: 520px;
+    }
+
+    .profile-card-info {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      z-index: 2;
+      background: rgba(255,255,255,0.86);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.9);
+      border-radius: 20px;
+      padding: 18px 18px 16px;
+      box-shadow: 0 18px 35px rgba(15, 23, 42, 0.12);
+    }
+
+    .profile-card-info h2 {
+      margin: 0 0 6px;
+      font-size: 1.4rem;
+    }
+
+    .profile-card-info p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .quick-grid,
+    .skills-grid,
+    .project-grid,
+    .contact-grid,
+    .summary-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .summary-grid { grid-template-columns: 1.1fr 0.9fr; }
+    .quick-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .skills-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .contact-grid { grid-template-columns: 1fr 1fr; }
+
+    .info-card {
+      padding: 24px;
+      height: 100%;
+    }
+
+    .info-card h3,
+    .timeline-card h3,
+    .skill-card h3,
+    .project-card h3,
+    .contact-card h3,
+    .summary-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.12rem;
+      letter-spacing: -0.02em;
+    }
+
+    .info-card p,
+    .timeline-card p,
+    .skill-card p,
+    .project-card p,
+    .contact-card p,
+    .summary-card p,
+    .summary-card li {
+      color: var(--muted);
+      margin: 0;
+      font-size: 0.97rem;
+    }
+
+    .summary-card {
+      padding: 28px;
+    }
+
+    .summary-card ul {
+      margin: 14px 0 0;
+      padding-left: 18px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 18px;
+    }
+
+    .timeline-card {
+      position: relative;
+      padding: 24px;
+      border-left: 5px solid var(--accent);
+    }
+
+    .timeline-meta {
+      display: inline-flex;
+      margin-bottom: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      color: var(--primary-dark);
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .skill-card {
+      padding: 0;
+      overflow: hidden;
+      height: 100%;
+    }
+
+    .skill-media {
+      aspect-ratio: 16 / 10;
+      display: grid;
+      place-items: center;
+      padding: 26px;
+      background: linear-gradient(135deg, #ffffff 0%, #f8f5ff 100%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .skill-media img {
+      max-width: 86px;
+      max-height: 86px;
+      object-fit: contain;
+    }
+
+    .skill-body,
+    .project-body,
+    .contact-card {
+      padding: 22px;
+    }
+
+    .project-card {
+      overflow: hidden;
+      height: 100%;
+    }
+
+    .project-media {
+      aspect-ratio: 16 / 10;
+      background: linear-gradient(135deg, #faf5ff 0%, #eef2ff 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 12px;
+    }
+
+    .project-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(228, 231, 236, 0.85);
+      background: white;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .project-tags span {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      font-size: 0.83rem;
+      font-weight: 700;
+      color: #475467;
+    }
+
+    .contact-card {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      height: 100%;
+    }
+
+    .icon-box {
+      width: 48px;
+      height: 48px;
+      flex: 0 0 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: var(--accent);
+      color: var(--primary-dark);
+      font-size: 1.2rem;
+      font-weight: 900;
+    }
+
+    .contact-card small {
+      color: var(--muted);
+      display: block;
+      margin-top: 4px;
+      font-size: 0.88rem;
+    }
+
+    footer {
+      padding: 26px 0 54px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .footer-card {
+      padding: 24px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer-card strong {
+      color: var(--text);
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .summary-grid,
+      .skills-grid,
+      .project-grid,
+      .contact-grid,
+      .quick-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .hero-grid,
+      .summary-grid { grid-template-columns: 1fr; }
+      .profile-photo-wrap,
+      .profile-photo { min-height: 420px; }
+    }
+
+    @media (max-width: 720px) {
+      .section { padding: 72px 0; }
+      .topbar-inner { padding: 12px 0; }
+      .nav-links {
+        width: 100%;
+        gap: 10px 14px;
+        justify-content: flex-start;
+      }
+      .stats,
+      .skills-grid,
+      .project-grid,
+      .contact-grid,
+      .quick-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero {
+        padding-top: 34px;
+      }
+      .hero-card,
+      .summary-card,
+      .info-card,
+      .timeline-card,
+      .skill-body,
+      .project-body,
+      .contact-card {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      .profile-card-info {
+        left: 18px;
+        right: 18px;
+        bottom: 18px;
+      }
+      .brand { align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#top">
+        <div class="brand-mark">CN</div>
+        <div>
+          <div>Chitapol Nantaphong</div>
+          <small style="color: var(--muted); font-weight: 600;">Portfolio Resume Website</small>
+        </div>
+      </a>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="card hero-card">
+          <div class="badge">PORTFOLIO • 2026</div>
+          <div class="eyebrow">Project Management Student</div>
+
+          <h1>Hi, I'm <span style="color: var(--primary);">Chitapol</span></h1>
+          <div class="hero-role">Aspiring Project Manager</div>
+
+          <p class="hero-copy">
+            CAMT, Chiang Mai University — interested in planning, teamwork,
+            and turning ideas into practical results.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects">View Projects</a>
+            <a class="btn btn-secondary" href="#contact">Contact Me</a>
+          </div>
+
+          <div class="hero-facts">
+            <div class="hero-fact">
+              <span>Program</span>
+              <strong>Project Management</strong>
+            </div>
+            <div class="hero-fact">
+              <span>University</span>
+              <strong>Chiang Mai University</strong>
+            </div>
+            <div class="hero-fact">
+              <span>Location</span>
+              <strong>Chiang Mai, Thailand</strong>
+            </div>
+          </div>
+        </div>
+
+        <aside class="card profile-panel">
+          <div class="profile-photo-wrap">
+            <img class="profile-photo" src="assets/profile.jpg" alt="Chitapol profile photo" />
+            <div class="profile-card-info">
+              <h2>Chitapol Nantaphong</h2>
+              <p>Project Management Student • CAMT</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-subtitle">
+          A summary of my profile in a simple and organized format. This section highlights who I am, what I study, and the strengths I want to communicate through this portfolio website.
+        </p>
+
+        <div class="summary-grid">
+          <div class="card summary-card">
+            <h3>Profile Summary</h3>
+            <p>
+              I am interested in project coordination, teamwork, and digital tools that help organize work more effectively. I enjoy planning, problem solving, and learning by doing through classroom projects, teamwork, and self-development.
+            </p>
+            <ul>
+              <li>Strong interest in project management and team coordination</li>
+              <li>Comfortable working with planning tools and collaborative workflows</li>
+              <li>Open to learning new systems, technology, and design processes</li>
+            </ul>
+          </div>
+          <div class="card summary-card">
+            <h3>Quick Information</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px;">
+              <span class="chip">Name: Chitapol Nantaphong</span>
+              <span class="chip">Field: Project Management</span>
+              <span class="chip">Faculty: CAMT</span>
+              <span class="chip">University: Chiang Mai University</span>
+              <span class="chip">Location: Chiang Mai, Thailand</span>
+              <span class="chip">Goal: Junior Project Manager</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="quick-grid" style="margin-top: 20px;">
+          <div class="card info-card">
+            <h3>Strengths</h3>
+            <p>Organized, cooperative, and able to manage tasks step by step.</p>
+          </div>
+          <div class="card info-card">
+            <h3>Working Style</h3>
+            <p>Prefer clear plans, neat documents, and good communication in a team.</p>
+          </div>
+          <div class="card info-card">
+            <h3>Career Interest</h3>
+            <p>Project coordination, startup operations, and digital workflow management.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="education" style="padding-top: 0;">
+      <div class="container">
+        <h2 class="section-title">Education & Experience</h2>
+        <p class="section-subtitle">
+          A clean timeline layout for education and project-based experience. You can edit the text later to match your actual coursework, internships, or activities.
+        </p>
+        <div class="timeline">
+          <div class="card timeline-card">
+            <span class="timeline-meta">Education</span>
+            <h3>College of Arts, Media and Technology (CAMT)</h3>
+            <p>Project Management Program, Chiang Mai University. Building knowledge in teamwork, communication, planning, and digital project workflows.</p>
+          </div>
+          <div class="card timeline-card">
+            <span class="timeline-meta">Academic Projects</span>
+            <h3>Coursework & Group Projects</h3>
+            <p>Participated in team-based assignments that required coordination, task division, scheduling, and presenting results in an organized way.</p>
+          </div>
+          <div class="card timeline-card">
+            <span class="timeline-meta">Personal Development</span>
+            <h3>Learning Tools & Practical Skills</h3>
+            <p>Continually improving in documentation, collaboration tools, basic web development, and interface design to support future project work.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills" style="padding-top: 0;">
+      <div class="container">
+        <h2 class="section-title">Skills & Tools</h2>
+       <p class="section-subtitle">
+         Tools and skills I use for project planning, design, development, and teamwork.
+      </p>
+        <div class="skills-grid">
+          <article class="card skill-card">
+            <div class="skill-media"><img src="assets/figma.svg" alt="Figma" /></div>
+            <div class="skill-body">
+              <h3>UX/UI Design</h3>
+              <p>Create wireframes and interface ideas for more organized digital experiences.</p>
+            </div>
+          </article>
+          <article class="card skill-card">
+            <div class="skill-media"><img src="assets/notion.png" alt="Notion" /></div>
+            <div class="skill-body">
+              <h3>Notion</h3>
+              <p>Use workspace tools to manage notes, tasks, documentation, and project planning.</p>
+            </div>
+          </article>
+          <article class="card skill-card">
+            <div class="skill-media"><img src="assets/javascript.png" alt="JavaScript"  /></div>
+            <div class="skill-body">
+              <h3>JavaScript</h3>
+              <p>Basic JavaScript for web interactions and front-end logic.</p>
+            </div>
+          </article>
+          <article class="card skill-card">
+            <div class="skill-media"><img src="assets/team.svg" alt="Teamwork" /></div>
+            <div class="skill-body">
+              <h3>Team Collaboration</h3>
+              <p>Work effectively with others through communication, coordination, and responsibility sharing.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects" style="padding-top: 0;">
+      <div class="container">
+        <h2 class="section-title">Selected Projects</h2>
+        <p class="section-subtitle">
+          Example project cards arranged in a clean portfolio style. These can be replaced with your real projects, screenshots, links, or course assignments later.
+        </p>
+        <div class="project-grid">
+          <article class="card project-card">
+            <div class="project-media"><img src="assets/project1.svg" alt="Project 1" /></div>
+            <div class="project-body">
+              <div class="project-tags">
+                <span>Project Planning</span>
+                <span>Teamwork</span>
+              </div>
+              <h3>Startup Ecosystem Mapping</h3>
+              <p>A concept project focused on research, organization, and presenting information in a structured visual format.</p>
+            </div>
+          </article>
+          <article class="card project-card">
+            <div class="project-media"><img src="assets/project2.svg" alt="Project 2" /></div>
+            <div class="project-body">
+              <div class="project-tags">
+                <span>Process Design</span>
+                <span>Management</span>
+              </div>
+              <h3>Sprint Workflow Framework</h3>
+              <p>An example portfolio piece showing planning logic, workflow design, and better communication between team members.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact" style="padding-top: 0;">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-subtitle">
+          This section is ready for submission. You can update the email, phone number, and social links in the HTML file later if needed.
+        </p>
+        <div class="contact-grid">
+          <div class="card contact-card">
+            <div class="icon-box">@</div>
+            <div>
+              <h3>Email</h3>
+              <p>your-email@example.com</p>
+              <small>Replace this with your real email address.</small>
+            </div>
+          </div>
+          <div class="card contact-card">
+            <div class="icon-box">☎</div>
+            <div>
+              <h3>Phone</h3>
+              <p>096-687-9271</p>
+              <small>Replace this with your contact number.</small>
+            </div>
+          </div>
+          <div class="card contact-card">
+            <div class="icon-box">⌂</div>
+            <div>
+              <h3>Location</h3>
+              <p>Chiang Mai, Thailand</p>
+              <small>Available for study projects and portfolio presentation.</small>
+            </div>
+          </div>
+          <div class="card contact-card">
+            <div class="icon-box">⇄</div>
+            <div>
+              <h3>Social / Portfolio Link</h3>
+              <p>facebook.com / instagram.com / github.com</p>
+              <small>Optional: add your real profile links here.</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="card footer-card">
+        <div>
+          <strong>Chitapol Nantaphong</strong><br />
+          Project Management Student • Portfolio Resume Website
+        </div>
+        <div>Designed in a clean, organized style for easy submission and review.</div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
